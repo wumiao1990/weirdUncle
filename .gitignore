@@ -1,1 +1,8 @@
-/Unity/Library/
+/Unity/Library
+/Unity/Temp
+/Unity/.idea
+/Unity/obj
+/Unity/Assembly-CSharp-Editor.csproj
+/Unity/Assembly-CSharp.csproj
+/Unity/Unity.sln
+/Unity/Unity.sln.DotSettings.user
