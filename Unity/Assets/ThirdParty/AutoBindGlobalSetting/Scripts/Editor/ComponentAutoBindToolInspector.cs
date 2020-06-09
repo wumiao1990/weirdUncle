@@ -430,7 +430,7 @@ public class ComponentAutoBindToolInspector : Editor
             Debug.LogError(go.name+ "的代码保存路径" + codePath + "无效");
         }
 
-        codePath = codePath + "/ "+ className +".BindComponents.cs";
+        codePath = codePath + "/"+ className +".BindComponents.cs";
         using (StreamWriter sw = new StreamWriter(codePath))
         {
             sw.WriteLine("using UnityEngine;");
@@ -455,7 +455,7 @@ public class ComponentAutoBindToolInspector : Editor
             //组件字段
             foreach (BindData data in m_Target.BindDatas)
             {
-                string dataBindCom = "\t\tprivate " + data.BindCom.GetType().Name + "m_" + data.Name + ";";
+                string dataBindCom = "\t\tprivate " + data.BindCom.GetType().Name + " m_" + data.Name + ";";
                 sw.WriteLine(dataBindCom);
             }
             sw.WriteLine("");
