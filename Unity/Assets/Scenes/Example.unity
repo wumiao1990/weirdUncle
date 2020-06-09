@@ -1522,7 +1522,7 @@ MonoBehaviour:
     BindCom: {fileID: 506941057}
   m_ClassName: MainUI
   m_Namespace: 
-  m_CodePath: E:/UnityTest/GitHub/weirdUncle/Unity/Assets/Scripts
+  m_CodePath: E:/UnityTest/GitHub/weirdUncle/Unity/Assets/Scripts/UI
   m_BindComs:
   - {fileID: 3031567496786292501}
   - {fileID: 3031567497652466427}

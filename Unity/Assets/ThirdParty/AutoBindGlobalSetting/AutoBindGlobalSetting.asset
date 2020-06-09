@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089caf30d869f954eb91eb065677f71c, type: 3}
   m_Name: AutoBindGlobalSetting
   m_EditorClassIdentifier: 
-  m_CodePath: E:/UnityTest/GitHub/weirdUncle/Unity/Assets/Scripts
+  m_CodePath: E:/UnityTest/GitHub/weirdUncle/Unity/Assets/Scripts/UI
   m_Namespace: 
