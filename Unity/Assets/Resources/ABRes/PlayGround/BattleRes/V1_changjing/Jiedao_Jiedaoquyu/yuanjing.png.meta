@@ -1,0 +1,118 @@
+fileFormatVersion: 2
+guid: 6caa0363f8c069a4ebb7068fa2576939
+timeCreated: 1545812640
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: 56
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+    outline:
+    - - {x: 463, y: -41}
+      - {x: 420.4306, y: -8.953735}
+      - {x: 369.7224, y: -16.907478}
+      - {x: 303.85406, y: 18.476868}
+      - {x: 239.33093, y: -22.476868}
+      - {x: 163.63708, y: -5.192177}
+      - {x: 142.71533, y: 21.569382}
+      - {x: 113.33093, y: -0.95373535}
+      - {x: 77.71533, y: 18.238434}
+      - {x: 86.33099, y: 91}
+      - {x: 33.854065, y: 124.37721}
+      - {x: -17.854095, y: 90.52313}
+      - {x: -13.2846985, y: 30.761566}
+      - {x: -64.145905, y: 4.330963}
+      - {x: -160.1922, y: 62.56938}
+      - {x: -217, y: 19}
+      - {x: -208, y: -11}
+      - {x: -262, y: 14}
+      - {x: -337, y: 42}
+      - {x: -396, y: -13}
+      - {x: -456.90033, y: 8.523132}
+      - {x: -512, y: -23.861229}
+      - {x: -512, y: -128}
+      - {x: 512, y: -128}
+      - {x: 512, y: -38}
+      - {x: 498, y: -23}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

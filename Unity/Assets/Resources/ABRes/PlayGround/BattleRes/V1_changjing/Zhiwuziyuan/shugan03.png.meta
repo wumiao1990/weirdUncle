@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 07b341a9b72a0984f8b0cbcaa2c5c73b
+timeCreated: 1547630405
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0.15
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: 56
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+    outline:
+    - - {x: 93.56557, y: -247.37704}
+      - {x: 100.622955, y: -237.54918}
+      - {x: 78.63112, y: -220.36066}
+      - {x: 15.203857, y: -221.01657}
+      - {x: -2.6393433, y: -189.53278}
+      - {x: -6.6229477, y: -138}
+      - {x: 9.893433, y: -103.27869}
+      - {x: 33.24266, y: -87.31691}
+      - {x: 38.65956, y: -62.61725}
+      - {x: 126.279236, y: -13.032349}
+      - {x: 128, y: 19}
+      - {x: 125, y: 19}
+      - {x: 104, y: -9}
+      - {x: 82.88524, y: -21.303284}
+      - {x: 91.2623, y: 31.942657}
+      - {x: 82.81148, y: 31.942627}
+      - {x: 71.11476, y: -9.073776}
+      - {x: 53.475403, y: -32.639343}
+      - {x: 29.45082, y: -41.54918}
+      - {x: 4, y: -84}
+      - {x: 18, y: -4}
+      - {x: 64.92622, y: 70.96719}
+      - {x: 90.37706, y: 137.14752}
+      - {x: 84.2623, y: 143.13116}
+      - {x: 62.852448, y: 106.122955}
+      - {x: 63.68033, y: 146}
+      - {x: 55.86885, y: 147.18854}
+      - {x: 50.565582, y: 82.41806}
+      - {x: 26.882996, y: 51.68387}
+      - {x: 19.897049, y: 97.37494}
+      - {x: 22.999985, y: 244.44843}
+      - {x: 16.316162, y: 256}
+      - {x: 2.4191284, y: 256}
+      - {x: 0.15441895, y: 152.44864}
+      - {x: -4.2132263, y: 127.477936}
+      - {x: -37.65699, y: 229.45023}
+      - {x: -48.06823, y: 224.87543}
+      - {x: -15.066643, y: 101.021576}
+      - {x: -17.497932, y: 19.950348}
+      - {x: -29.734482, y: -58.137222}
+      - {x: -43.77761, y: -58.742172}
+      - {x: -52, y: -44.51863}
+      - {x: -63.7676, y: 32.755157}
+      - {x: -75.24069, y: 31.248962}
+      - {x: -67, y: -37}
+      - {x: -106.01242, y: 53.00415}
+      - {x: -114.995865, y: 49.506195}
+      - {x: -86.433395, y: -42.355408}
+      - {x: -52.712128, y: -116.50571}
+      - {x: -66.42517, y: -189.95929}
+      - {x: -85, y: -221}
+      - {x: -110.967094, y: -216}
+      - {x: -128, y: -229}
+      - {x: -128, y: -243}
+      - {x: -100.05888, y: -256}
+      - {x: 32, y: -256}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

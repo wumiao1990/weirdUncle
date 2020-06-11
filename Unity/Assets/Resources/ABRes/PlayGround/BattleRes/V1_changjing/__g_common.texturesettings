@@ -1,0 +1,85 @@
+textureType:8
+spriteImportMode:1
+sRGBTexture:1
+alphaSource:1
+alphaIsTransparency:1
+npotScale:0
+isReadable:0
+mipmapEnabled:0
+spritePackingTag:none
+
+
+//一下是注释，会忽略下面的内容，请注意
+
+	textureType:
+	public enum TextureImporterType
+    {
+        
+        Default = 0,
+        Image = 0,
+        NormalMap = 1,
+        Bump = 1,
+        GUI = 2,
+        Cubemap = 3,
+        Reflection = 3,
+        Cookie = 4,
+        Advanced = 5,
+        Lightmap = 6,
+        Cursor = 7,
+        Sprite = 8,
+        HDRI = 9,
+        SingleChannel = 10
+    }
+	
+	-----------------------------------------
+
+	spriteImportMode:
+	public enum SpriteImportMode
+    {
+        None = 0,
+        Single = 1,
+        Multiple = 2,
+        Polygon = 3
+    }
+	-----------------------------------------
+	
+	spritePackingTag:使用名称设置，none表示删除设置, _folder_表示使用文件夹名称设置
+	
+	----------------------------------------
+	
+	sRGBTexture:1表示使用，0表示不使用
+	
+	----------------------------------------
+	
+	alphaSource:
+    public enum TextureImporterAlphaSource
+    {
+        None = 0,
+        FromInput = 1,
+        FromGrayScale = 2
+    }
+	
+	-----------------------------------------
+	
+	alphaIsTransparency:1表示使用，0表示不使用
+	
+	------------------------------------------
+	
+	npotScale:
+	public enum TextureImporterNPOTScale
+    {
+        None = 0,
+        ToNearest = 1,
+        ToLarger = 2,
+        ToSmaller = 3
+    }
+	
+	-------------------------------------------
+	
+	isReadable:1表示使用，0表示不使用
+	
+	------------------------------------------
+	
+	mipmapEnabled:1表示使用，0表示不使用
+	
+	------------------------------------------
