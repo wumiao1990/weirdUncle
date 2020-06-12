@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Spine.Unity;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class HonjinManager : MonoBehaviour
 {
 	private string[] sdPath = {"ABRes/PlayGround/art/sd-card/guangguo"};
 	List<SkeletonAnimation> listSkeletonAnimation = new List<SkeletonAnimation>();
-	private float MoveSpeed = 1.5f;
+	public GameObject startPostObj;
 	
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class HonjinManager : MonoBehaviour
 			string path = sdPath[i];
 			GameObject skeletonGo = AssetBundleManager.Instance.InstantiatePrefab<GameObject>(path);
 			SkeletonAnimation sa = skeletonGo.GetComponent<SkeletonAnimation>();
+			Character ct = skeletonGo.GetComponent<Character>();
 		
 			sa.skeletonDataAsset = GameObject.Instantiate<SkeletonDataAsset>(sa.skeletonDataAsset);
 			sa.initialSkinName = sa.initialSkinName;
@@ -24,14 +26,13 @@ public class HonjinManager : MonoBehaviour
 			sa.Initialize(true);
 			sa.gameObject.transform.localPosition = Vector3.zero;
 			
+			ct.StartMove(new Vector3(-5, -3, 0));
+			
 			listSkeletonAnimation.Add(sa);
-
 			//sa.AnimationName = "B_walk";//B_sit01,B_eat,B_walk,B_idle01
 		}
 	}
 	
-	// Update is called once per frame
-	Vector3 Target = Vector3.zero;
 	void Update () 
 	{
 		if (Input.GetMouseButtonDown (0) || (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began)) //点击鼠标右键
@@ -41,36 +42,18 @@ public class HonjinManager : MonoBehaviour
          	bool isHit = Physics.Raycast((Ray) ray, out hit);             //发出射线检测到了碰撞   isHit返回的是 一个bool值
          	if (isHit)
          	{
-                Target = hit.point;
-                SkeletonAnimation sa = listSkeletonAnimation[0];
-                sa.AnimationName = "B_walk";
                 
-                Debug.Log("curretnPostion：" + sa.transform.position + "TargetPostion：" + hit.point + " obj:" + hit.collider.gameObject.name);
-
-                if (Target.x > sa.transform.position.x)
-                {
-	                sa.transform.rotation = new Quaternion(0,0,0,0);
-                }
-                else
-                {
-	                sa.transform.rotation = new Quaternion(0,-200,0,0);
-                }
+                Debug.Log("TargetPostion：" + hit.point + " obj:" + hit.collider.gameObject.name);
+                InstantiateBullet(hit.point);
             }
         }
-
-		MoveSD();
 	}
 
-	void MoveSD()
+	void InstantiateBullet(Vector3 targetPos)
 	{
-		GameObject go = listSkeletonAnimation[0].gameObject;
-		SkeletonAnimation sa = listSkeletonAnimation[0];
-		go.transform.position = Vector3.MoveTowards(go.transform.position, Target, MoveSpeed * Time.deltaTime);
-
-		if (go.transform.position == Target)
-		{
-			sa.AnimationName = "B_idle01";
-		}
+		GameObject gobullet = AssetBundleManager.Instance.InstantiatePrefab<GameObject>("ABRes/bullet");
+		Bullet bullet = gobullet.GetComponent<Bullet>();
+		bullet.pointA = startPostObj.transform.position;
+		bullet.pointB = targetPos;
 	}
-
 }
