@@ -19,6 +19,7 @@ namespace MoleMole
             Singleton<UIManager>.Create();
             Singleton<ContextManager>.Create();
             Singleton<Localization>.Create();
+            GameObject.DontDestroyOnLoad(gameObject);
         }
 
 	}
