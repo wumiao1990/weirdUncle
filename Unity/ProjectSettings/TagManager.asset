@@ -14,10 +14,10 @@ TagManager:
   - UI
   - 
   - 
-  - HonJin
-  - ParaLLax
-  - 
-  - 
+  - BaseItemCollider
+  - GroundCollider
+  - HONJIN
+  - PARALLAX
   - 
   - 
   - 

@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 6ba36cd07d86ee14a9ee726defa3af66
-  - enabled: 1
-    path: Assets/Scenes/HonJin.unity
-    guid: 4f60e14ef4a7ff842b053f4ce9f0ac71
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
