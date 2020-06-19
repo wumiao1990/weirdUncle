@@ -1,0 +1,20 @@
+
+event_baoxiang.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xiangzihe
+  rotate: false
+  xy: 101, 1
+  size: 86, 65
+  orig: 86, 65
+  offset: 0, 0
+  index: -1
+xiangzikai
+  rotate: false
+  xy: 1, 4
+  size: 98, 62
+  orig: 98, 63
+  offset: 0, 0
+  index: -1

@@ -76,7 +76,7 @@ public class SceneManager : MonoBehaviour
 	/// </summary>
 	/// <returns>The item.</returns>
 	/// <param name="itemId">Item identifier.</param>
-	public BaseItemScript AddItem(int itemId, int instanceId, int posX, int posZ, bool immediate, bool ownedItem)
+	public BaseItemScript AddItem(int itemId, int instanceId, int posX, int posY, bool immediate, bool ownedItem)
 	{
 		BaseItemScript builder = null;
 
@@ -101,7 +101,7 @@ public class SceneManager : MonoBehaviour
 		instance.instanceId = instanceId;
 		this._itemInstances.Add(instanceId, instance);
 
-		instance.SetItemData(itemId, posX, posZ);
+		instance.SetItemData(itemId, posX, posY);
 		instance.SetState(Common.State.IDLE);
 
 		//		GroundManager.Cell freeCell = GroundManager.instance.GetRandomFreeCellForItem (instance);
@@ -133,15 +133,15 @@ public class SceneManager : MonoBehaviour
 	public BaseItemScript AddItem(int itemId, bool immediate, bool ownedItem)
 	{
 		int posX = 0;
-		int posZ = 0;
+		int posY = 0;
 		if(!immediate)
 		{
 			ItemsCollection.ItemData itemData = Items.GetItem(itemId);
 			Vector3 freePosition = GroundManager.instance.GetRandomFreePositionForItem(itemData.gridSize, itemData.gridSize);
 			posX = (int)freePosition.x;
-			posZ = (int)freePosition.z;
+			posY = (int)freePosition.y;
 		}
-		return this.AddItem(itemId, -1, posX, posZ, immediate, ownedItem);
+		return this.AddItem(itemId, -1, posX, posY, immediate, ownedItem);
 	}
 
 	/// <summary>
@@ -414,7 +414,7 @@ public class SceneManager : MonoBehaviour
 
 		foreach (ItemData itemData in sceneData.items)
 		{
-			this.AddItem(itemData.itemId, itemData.instanceId, itemData.posX, itemData.posZ, true, true);
+			this.AddItem(itemData.itemId, itemData.instanceId, itemData.posX, itemData.posY, true, true);
 		}
 
 		//LOAD UNITS ON CAMP
@@ -424,14 +424,14 @@ public class SceneManager : MonoBehaviour
 			for (int index = 0; index < _swordManCount; index++)
 			{
 				var camp = armyCamps[Random.Range(0, armyCamps.Length)];
-				BaseItemScript unit = this.AddItem(_swordMan_ID, -1, camp.GetPositionX(), camp.GetPositionZ(), true, true);
+				BaseItemScript unit = this.AddItem(_swordMan_ID, -1, camp.GetPositionX(), camp.GetPositionY(), true, true);
 				unit.WalkRandom(camp);
 			}
 
 			for (int index = 0; index < _archerCount; index++)
             {
                 var camp = armyCamps[Random.Range(0, armyCamps.Length)];
-				BaseItemScript unit = this.AddItem(_archer_ID, -1, camp.GetPositionX(), camp.GetPositionZ(), true, true);
+				BaseItemScript unit = this.AddItem(_archer_ID, -1, camp.GetPositionX(), camp.GetPositionY(), true, true);
 				unit.WalkRandom(camp);
             }
 		}
@@ -470,7 +470,7 @@ public class SceneManager : MonoBehaviour
 
 		foreach (ItemData itemData in sceneData.items)
 		{
-			BaseItemScript baseItem = this.AddItem(itemData.itemId, itemData.instanceId, itemData.posX, itemData.posZ, true, false);
+			BaseItemScript baseItem = this.AddItem(itemData.itemId, itemData.instanceId, itemData.posX, itemData.posY, true, false);
 			baseItem.OnItemDestroy += this.OnEnemyItemDestroy;
 		}
 		GroundManager.instance.UpdateAllNodes();

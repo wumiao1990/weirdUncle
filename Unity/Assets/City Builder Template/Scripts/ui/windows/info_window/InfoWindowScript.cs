@@ -11,7 +11,7 @@ public class InfoWindowScript : WindowScript {
 
 	/* object references */
 	public Text Title;
-	public RawImage ThumbImage;
+	public GameObject ThumbImage;
 	public GameObject InfoPanel;
 
     
@@ -41,7 +41,7 @@ public class InfoWindowScript : WindowScript {
 	public void RenderInfo()
 	{
 		this.Title.text = this._baseItem.itemData.name;
-		this.ThumbImage.texture = this._baseItem.itemData.thumb;
+		this.ThumbImage = this._baseItem.itemData.thumb;
 
 		bool isCharacter = this._baseItem.itemData.configuration.isCharacter;
 

@@ -175,8 +175,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2, z: 1}
-  m_Center: {x: 0.5, y: 0.1, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.4, z: 0.5}
 --- !u!114 &114130250325439922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +247,7 @@ MonoBehaviour:
   itemData:
     id: 0
     name: 
+    thumb: {fileID: 0}
     gridSize: 4
     configuration:
       buildTime: 0
@@ -264,6 +265,7 @@ MonoBehaviour:
     destroyedSprites: 
   healthPoints: 0
   isDestroyed: 0
+  ownedItem: 0
   connectedItems: []
   buildingItem: {fileID: 0}
 --- !u!114 &114404037210957756
@@ -336,3 +338,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainingQueue: 
+  trainingStartTime: 0

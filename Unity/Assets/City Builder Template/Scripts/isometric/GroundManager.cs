@@ -26,11 +26,16 @@ public class GroundManager : MonoBehaviour {
 
 	public static GroundManager instance;
 
+	public GameObject starpos;
+
 	/* public variables */
 	public bool showNodes;
 
-	public const int nodeWidth = 44;
-	public const int nodeHeight = 44;
+	public const int nodeWidth = 30;
+	public const int nodeHeight = 3;
+	
+	public const int startX = 0;
+	public const int startY = 0;
 
 	public int[,] instanceNodes;
 	public bool[,] pathNodesWithoutWall;
@@ -51,9 +56,9 @@ public class GroundManager : MonoBehaviour {
 			return;
 		}
 
-		for (int x = 0; x < nodeWidth; x++) {
-			for (int z = 0; z < nodeHeight; z++) {
-				if (this.pathNodesWithoutWall [x, z] == true) {
+		for (int x = startX; x < nodeWidth; x++) {
+			for (int y = startY; y < nodeHeight; y++) {
+				if (this.pathNodesWithoutWall [x, y] == true) {
 					//walkable
 					color = Color.green;
 					color.a = 0.5f;
@@ -63,7 +68,7 @@ public class GroundManager : MonoBehaviour {
 					color.a = 0.5f;
 					Gizmos.color = color;
 				}
-				Gizmos.DrawCube (new Vector3 (x+0.5f, 0, z+0.5f), new Vector3 (0.4f, 0.4f, 0.4f));
+				Gizmos.DrawCube (new Vector3 (x+0.5f, y+0.5f, 0), new Vector3 (0.4f, 0.4f, 0.4f));
 			}
 		}
 
@@ -75,11 +80,11 @@ public class GroundManager : MonoBehaviour {
 		this.pathNodesWithoutWall = new bool[nodeWidth, nodeHeight];
 		this.pathNodesWithWall = new bool[nodeWidth, nodeHeight];
 
-		for (int x = 0; x < nodeWidth; x++) {
-			for (int z = 0; z < nodeHeight; z++) {
-				this.instanceNodes [x, z] = -1;
-				this.pathNodesWithoutWall [x, z] = true;
-				this.pathNodesWithWall [x, z] = true;
+		for (int x = startX; x < nodeWidth; x++) {
+			for (int y = startY; y < nodeHeight; y++) {
+				this.instanceNodes [x, y] = -1;
+				this.pathNodesWithoutWall [x, y] = true;
+				this.pathNodesWithWall [x, y] = true;
 			}
 		}
 
@@ -96,14 +101,14 @@ public class GroundManager : MonoBehaviour {
 		Vector3 pos = item.GetPosition ();
 
 		int x = (int)(pos.x);
-		int z = (int)(pos.z);
+		int y = (int)(pos.y);
 		int sizeX = (int)item.GetSize ().x;
-		int sizeZ = (int)item.GetSize ().z;
+		int sizeY = (int)item.GetSize ().y;
 
 		for (int indexX = x; indexX < x + sizeX; indexX++) {
-			for (int indexZ = z; indexZ < z + sizeZ; indexZ++) {
+			for (int indexY = y; indexY < y + sizeY; indexY++) {
 				bool isCellWalkable = false;
-				if ((sizeX > 2 && indexX == x) || (sizeX > 2 && indexX == x + sizeX - 1) || (sizeZ > 2 && indexZ == z) || (sizeZ > 2 && indexZ == z + sizeZ - 1)) {
+				if ((sizeX > 2 && indexX == x) || (sizeX > 2 && indexX == x + sizeX - 1) || (sizeY > 2 && indexY == y) || (sizeY > 2 && indexY == y + sizeY - 1)) {
 					//use this for make outer edge walkable for items have size morethan 2x2
 					isCellWalkable = true;
 				}
@@ -115,20 +120,20 @@ public class GroundManager : MonoBehaviour {
 
 				if (action == Action.ADD) {
 					//adding scene item to nodes, so walkable is false
-					this.instanceNodes [indexX, indexZ] = item.instanceId;
+					this.instanceNodes [indexX, indexY] = item.instanceId;
 
 					if (item.itemData.name == "Wall") {
-						this.pathNodesWithoutWall [indexX, indexZ] = true;
-						this.pathNodesWithWall [indexX, indexZ] = false;
+						this.pathNodesWithoutWall [indexX, indexY] = true;
+						this.pathNodesWithWall [indexX, indexY] = false;
 					} else {
-						this.pathNodesWithoutWall [indexX, indexZ] = isCellWalkable;
+						this.pathNodesWithoutWall [indexX, indexY] = isCellWalkable;
 					}
 
 				} else if (action == Action.REMOVE) {
-					if(this.instanceNodes[indexX, indexZ] == item.instanceId){
-						this.instanceNodes [indexX, indexZ] = -1;
-						this.pathNodesWithoutWall [indexX, indexZ] = true;
-						this.pathNodesWithWall [indexX, indexZ] = true;
+					if(this.instanceNodes[indexX, indexY] == item.instanceId){
+						this.instanceNodes [indexX, indexY] = -1;
+						this.pathNodesWithoutWall [indexX, indexY] = true;
+						this.pathNodesWithWall [indexX, indexY] = true;
 					}
 				}
 
@@ -183,11 +188,11 @@ public class GroundManager : MonoBehaviour {
 		return new Vector3 (x, 0, z);
 	}
 
-	public Vector3 GetRandomFreePositionForItem(int sizeX, int sizeZ){
+	public Vector3 GetRandomFreePositionForItem(int sizeX, int sizeY){
 		Vector3 randomPosition = new Vector3(Random.Range (0, nodeWidth), 0, Random.Range (0, nodeHeight));
 
-		if (!IsPositionPlacable (randomPosition, sizeX, sizeZ, -1)) {
-			return GetRandomFreePositionForItem (sizeX, sizeZ);
+		if (!IsPositionPlacable (randomPosition, sizeX, sizeY, -1)) {
+			return GetRandomFreePositionForItem (sizeX, sizeY);
 		}
 
 		return randomPosition;
@@ -214,18 +219,18 @@ public class GroundManager : MonoBehaviour {
 		return freePosition;
 	}
 
-	public bool IsPositionPlacable(Vector3 position, int sizeX, int sizeZ, int instanceId){
+	public bool IsPositionPlacable(Vector3 position, int sizeX, int sizeY, int instanceId){
 		int posX = (int)position.x;
-		int posZ = (int)position.z;
+		int posY = (int)position.y;
 
 		for (int indexX = posX; indexX < posX + sizeX; indexX++) {
-			for (int indexZ = posZ; indexZ < posZ + sizeZ; indexZ++) {
-				if (indexX < 0 || indexX >= nodeWidth || indexZ < 0 || indexZ >= nodeHeight) {
+			for (int indexY = posY; indexY < posY + sizeY; indexY++) {
+				if (indexX < 0 || indexX >= nodeWidth || indexY < 0 || indexY >= nodeHeight) {
 					//outside grid
 					return false;
 				}
 
-				if (instanceNodes [indexX, indexZ] != -1 && instanceNodes [indexX, indexZ] != instanceId) {
+				if (instanceNodes [indexX, indexY] != -1 && instanceNodes [indexX, indexY] != instanceId) {
 					return false;
 				}
 

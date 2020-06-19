@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Spine.Unity;
 using UnityEngine;
 
 public class BaseItemRendererScript : MonoBehaviour
@@ -18,6 +19,27 @@ public class BaseItemRendererScript : MonoBehaviour
 	{
 		this.Clear();
 		this.UpdateRenderQuads();
+
+		//ABRes/PlayGround/art/sd-card/guangguo
+//		GameObject skeletonGo = this.BaseItem.itemData.thumb;
+//		Utilities.CreateInstance(skeletonGo, RenderQuadsContainer, true);
+		
+		string path = "ABRes/PlayGround/art/sd-event/caiji";
+		GameObject skeletonGo = AssetBundleManager.Instance.InstantiatePrefab<GameObject>(path);
+		skeletonGo.transform.parent = RenderQuadsContainer.transform;
+		skeletonGo.gameObject.transform.localPosition = Vector3.zero;
+		skeletonGo.gameObject.transform.localScale = Vector3.one;
+		skeletonGo.gameObject.transform.localRotation = new Quaternion(0,0,0,0);
+		
+		SkeletonAnimation sa = skeletonGo.GetComponent<SkeletonAnimation>();
+		Character ct = skeletonGo.GetComponent<Character>();
+		sa.skeletonDataAsset = GameObject.Instantiate<SkeletonDataAsset>(sa.skeletonDataAsset);
+		sa.initialSkinName = sa.initialSkinName;
+		sa.loop = true;
+		sa.Initialize(true);
+		
+		RenderQuadsContainer.transform.localRotation = new Quaternion(0,0,0,0);
+		//this.RenderQuadsContainer.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
 		if (this.BaseItem.itemData.configuration.isCharacter)
 		{
@@ -58,6 +80,7 @@ public class BaseItemRendererScript : MonoBehaviour
 
 	public void UpdateRenderQuads()
 	{
+		return;
 		SpriteCollection.TextureData[] textureDataList = this._GetCurrentImageLayers();
 		if (textureDataList != null)
 		{

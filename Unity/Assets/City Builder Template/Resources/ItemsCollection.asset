@@ -247,9 +247,9 @@ MonoBehaviour:
     attackSprites: a70200003802000053010000
     destroyedSprites: a702000041030000
   - id: 2496
-    name: TownCenter
-    thumb: {fileID: 2800000, guid: 9e5566e678da14dc2b8db939bdec0478, type: 3}
-    gridSize: 4
+    name: caiji
+    thumb: {fileID: 1993174163640946, guid: 67dd570f294524644a793e10bb9f2a26, type: 2}
+    gridSize: 1
     configuration:
       buildTime: 0
       isCharacter: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
       hitPoints: 0
       productionRate: 0
       product: 
-    idleSprites: 3902000009030000ae010000
+    idleSprites: 
     walkSprites: 
     attackSprites: 
     destroyedSprites: a702000041030000

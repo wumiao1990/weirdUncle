@@ -67,7 +67,7 @@ public class BaseItemScript : MonoBehaviour
 		}
 	}
 
-	public void SetItemData(int itemId, int posX, int posZ)
+	public void SetItemData(int itemId, int posX, int posY)
 	{
 		this.itemData = Items.GetItem(itemId);
 		this.gameObject.name = itemData.name + " [INSTANCE]";
@@ -95,7 +95,7 @@ public class BaseItemScript : MonoBehaviour
 		//disable box collider for characters, otherwise characters can select by tap
 		this.BoxCollider.enabled = !this.itemData.configuration.isCharacter;
 
-		this.SetPosition(new Vector3(posX, 0, posZ));
+		this.SetPosition(new Vector3(posX, posY, 0));
 		this.UpdateConnectedItems();
 
 		//if(this.itemData.configuration.productionRate > 0)
@@ -224,9 +224,9 @@ public class BaseItemScript : MonoBehaviour
 		return (int)this.GetPosition().x;
 	}
 
-	public int GetPositionZ()
+	public int GetPositionY()
 	{
-		return (int)this.GetPosition().z;
+		return (int)this.GetPosition().y;
 	}
 
 	/// <summary>
@@ -324,11 +324,12 @@ public class BaseItemScript : MonoBehaviour
 	{
 		Vector3 point = evt.point + _deltaDistance;
 		point.x = Mathf.Floor(point.x);
-		point.z = Mathf.Floor(point.z);
+		point.y = Mathf.Floor(point.y);
 
 		if (point != this.transform.localPosition)
 		{
-			this.SetPosition(new Vector3(Mathf.Floor(point.x), 0, Mathf.Floor(point.z)));
+			Debug.LogError("OnItemDrag x:" + Mathf.Floor(point.x) + " y:" + Mathf.Floor(point.y));
+			this.SetPosition(new Vector3(Mathf.Floor(point.x), Mathf.Floor(point.y), 0));
 			this.UpdateConnectedItems();
 
 			bool isPlacable = _IsInPlacablePosition();
@@ -500,12 +501,12 @@ public class BaseItemScript : MonoBehaviour
 		else
 		{
 			int posX = parentItem.GetPositionX();
-			int posZ = parentItem.GetPositionZ();
+			int posZ = parentItem.GetPositionY();
 			int sizeX = (int)parentItem.GetSize().x;
-			int sizeZ = (int)parentItem.GetSize().z;
+			int sizeY = (int)parentItem.GetSize().y;
 
 			pos.x = Random.Range(posX, posX + sizeX);
-			pos.z = Random.Range(posZ, posZ + sizeZ);
+			pos.y = Random.Range(posZ, posZ + sizeY);
 		}
 
 		this.Walker.WalkToPosition(pos);
@@ -537,12 +538,12 @@ public class BaseItemScript : MonoBehaviour
 		else
 		{
 			int posX = _randomWalkParentItem.GetPositionX();
-			int posZ = _randomWalkParentItem.GetPositionZ();
+			int posZ = _randomWalkParentItem.GetPositionY();
 			int sizeX = (int)_randomWalkParentItem.GetSize().x;
-			int sizeZ = (int)_randomWalkParentItem.GetSize().z;
+			int sizeY = (int)_randomWalkParentItem.GetSize().y;
 
 			pos.x = Random.Range(posX, posX + sizeX);
-			pos.z = Random.Range(posZ, posZ + sizeZ);
+			pos.y = Random.Range(posZ, posZ + sizeY);
 		}
 
 		this.Walker.WalkToPosition(pos);

@@ -42,7 +42,7 @@ public class TrainingScript : MonoBehaviour {
 		yield return new WaitForSeconds(buildTime);
 
 		Vector3 randomFrontCell = _baseItem.GetRandomFrontCellPosition();
-		BaseItemScript newUnit = SceneManager.instance.AddItem(_currentTrainingTroop, -1, (int)randomFrontCell.x, (int)randomFrontCell.z, true, true);
+		BaseItemScript newUnit = SceneManager.instance.AddItem(_currentTrainingTroop, -1, (int)randomFrontCell.x, (int)randomFrontCell.y, true, true);
 		BaseItemScript nearestArmyCamp = SceneManager.instance.GetNearestArmyCamp(newUnit.GetPosition());
 		if (nearestArmyCamp != null)
 		{

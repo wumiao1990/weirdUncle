@@ -367,7 +367,7 @@ public class ItemEditorWindow : EditorWindow
     };
     private int gridSize = 4;
     private int _oldGridSize = 4;
-	private Texture2D thumb;
+	private GameObject thumb;
 
     void RenderRightPanel()
     {
@@ -427,7 +427,7 @@ public class ItemEditorWindow : EditorWindow
                 if (GUILayout.Button("Add Sprite"))
                     AddSpriteButtonMenu();
                 GUILayout.EndHorizontal();
-				thumb = (Texture2D)EditorGUILayout.ObjectField("Thumb", thumb, typeof(Texture2D));
+				thumb = (GameObject)EditorGUILayout.ObjectField("Thumb", thumb, typeof(GameObject));
             }
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);

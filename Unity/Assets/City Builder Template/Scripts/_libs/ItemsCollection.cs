@@ -24,7 +24,7 @@ public class ItemsCollection : ScriptableObject
     {
         public int id;
         public string name;
-		public Texture2D thumb;
+		public GameObject thumb;
 
         public int gridSize = 4;
         public Configuration configuration = new Configuration();

@@ -79,7 +79,7 @@ public class CameraManager : MonoBehaviour
 		this.UpdateBaseItemMove();
 		this.UpdateGroundTap();
 		this.UpdateScenePan();
-		this.UpdateSceneZoom();
+		//this.UpdateSceneZoom();
 	}
 
 	public bool IsUsingUI()
@@ -376,64 +376,13 @@ public class CameraManager : MonoBehaviour
 	private bool _isPanningSceneStarted;
 	public void UpdateScenePan()
 	{
-		this._RefreshTouchValues();
-
+		_RefreshTouchValues();
 		if (this._isDraggingBaseItem)
 		{
 			return;
 		}
-
-		if (this._touchCountChanged)
-		{
-			this._tapGroundStartPosition = this._TryGetRaycastHitBaseGround(this._touchPosition);
-		}
-
-		if (this._canPan)
-		{
-			Vector3 currentTapPosition = this._TryGetRaycastHitBaseGround(this._touchPosition);
-
-			if (this._touchCountChanged)
-			{
-				CameraEvent evt = new CameraEvent()
-				{
-					point = currentTapPosition
-				};
-				this.OnChangeTouchCountScenePan(evt);
-			}
-
-			if (!this._isPanningSceneStarted && Vector3.Distance(this._tapGroundStartPosition, currentTapPosition) >= 1f)
-			{
-				this._isPanningSceneStarted = true;
-				this._previousPanPoint = currentTapPosition;
-			}
-
-			if (this._isPanningSceneStarted)
-			{
-				CameraEvent evt = new CameraEvent()
-				{
-					point = currentTapPosition
-				};
-
-				this._isPanningScene = true;
-				this.OnScenePan(evt);
-			}
-
-		}
-		else
-		{
-			this._isPanningScene = false;
-
-			if (this._isPanningSceneStarted)
-			{
-				this._isPanningSceneStarted = false;
-				this.OnStopScenePan(null);
-			}
-		}
-
-		if (!this._isPanningScene)
-		{
-			this.UpdatePanInertia();
-		}
+		
+		OnScenePan();
 	}
 
 	private Vector3 _touchPoint1;
@@ -441,66 +390,7 @@ public class CameraManager : MonoBehaviour
 	private bool _isZoomingStarted;
 	private float _previousPinchDistance;
 	private float _oldZoom = -1;
-	public void UpdateSceneZoom()
-	{
-
-		if (this._isDraggingBaseItem)
-		{
-			return;
-		}
-
-		float newZoom = this.MainCamera.orthographicSize;
-
-		//Editor
-		float scrollAmount = Input.GetAxis("Mouse ScrollWheel");
-		if (scrollAmount != 0)
-		{
-			newZoom = newZoom - scrollAmount;
-		}
-
-		//Android
-		if (Input.touchCount == 0)
-		{
-			this._isZoomingStarted = false;
-		}
-
-		if (Input.touchCount == 2)
-		{
-			_touchPoint1 = _TryGetRaycastHitBaseGround(Input.GetTouch(0).position);
-			_touchPoint2 = _TryGetRaycastHitBaseGround(Input.GetTouch(1).position);
-			if (!_isZoomingStarted)
-			{
-				this._isZoomingStarted = true;
-				this._previousPinchDistance = (_touchPoint2 - _touchPoint1).magnitude;
-			}
-		}
-
-		if (this._isZoomingStarted)
-		{
-			float _currentPinchDistance = (_touchPoint2 - _touchPoint1).magnitude;
-			float delta = this._previousPinchDistance - _currentPinchDistance;
-			newZoom = this.MainCamera.orthographicSize + (delta / (2 * screenRatio));
-		}
-
-		//clamp zoom
-		newZoom = Mathf.Clamp(newZoom - scrollAmount, this._minZoomFactor, this._maxZoomFactor);
-		if (newZoom < this._minZoomFactor + _clampZoomOffset)
-		{
-			newZoom = Mathf.Lerp(newZoom, this._minZoomFactor + _clampZoomOffset, Time.deltaTime * 2);
-
-		}
-		else if (newZoom > this._maxZoomFactor - _clampZoomOffset)
-		{
-			newZoom = Mathf.Lerp(newZoom, this._maxZoomFactor - _clampZoomOffset, Time.deltaTime * 2);
-		}
-
-		if (this._oldZoom != newZoom)
-		{
-			this.MainCamera.orthographicSize = newZoom;
-			this.ClampCamera();
-			this._oldZoom = newZoom;
-		}
-	}
+	
 
 
 	//panning
@@ -510,80 +400,33 @@ public class CameraManager : MonoBehaviour
 	{
 		this._previousPanPoint = evt.point;
 	}
-
-	public void OnScenePan(CameraEvent evt)
+	
+	private float sensitivityAmt = 0.5f;
+	public void OnScenePan()
 	{
-		Vector3 delta = this._previousPanPoint - evt.point;
-		this.MainCamera.transform.localPosition += delta;
-		this._panVelocity = delta;
-		//		if(this._panVelocity.magnitude > 0.5f){
-		//			this._panVelocity = this._panVelocity.normalized * 0.5f;
-		//		}
-		this.ClampCamera();
-	}
-
-	public void OnStopScenePan(CameraEvent evt)
-	{
-		//		Debug.Log ("OnStopPan");
-	}
-
-	public void UpdatePanInertia()
-	{
-		if (this._panVelocity.magnitude < 0.05f)
+		if (Input.GetMouseButton(0) || Input.touchCount > 0)
 		{
-			this._panVelocity = Vector3.zero;
-		}
-		if (this._panVelocity != Vector3.zero)
-		{
-			this._panVelocity = Vector3.Lerp(_panVelocity, Vector3.zero, Time.deltaTime * 2);
-			this.MainCamera.transform.localPosition += this._panVelocity;
-			this.ClampCamera();
+			Vector3 p0 = transform.position;
+			Vector3 p01 = p0 - transform.right * Input.GetAxisRaw("Mouse X") * sensitivityAmt * Time.timeScale;
+			Vector3 p03 = p01 - transform.up * Input.GetAxisRaw("Mouse Y") * sensitivityAmt * Time.timeScale;
+			float x = p03.x;
+			if (x <= 9)
+			{
+				x = 9;
+			}
+			if (x >= 22)
+			{
+				x = 22;
+			}
+			transform.position = new Vector3(x, 3.95f, 0);
 		}
 	}
+
 
 	//clamps the camera within the scene limits, the limits can adjusted with '_CameraClampLeft' and 
 	//'_CameraClampRight' components
 
 
-	public void ClampCamera()
-	{
-		//		return;
-		float worldSizePerPixel = 2 * this.MainCamera.orthographicSize / (float)Screen.height;
-
-		//clamp camera left and top
-		Vector3 leftClampScreenPos = this.MainCamera.WorldToScreenPoint(CameraBoundScript.instance.CameraClampTopLeftPosition);
-		if (leftClampScreenPos.x > 0)
-		{
-			float deltaFactor = leftClampScreenPos.x * worldSizePerPixel;
-			Vector3 delta = new Vector3(deltaFactor, 0, 0);
-			delta = this.MainCamera.transform.TransformVector(delta);
-			this.MainCamera.transform.localPosition += delta;
-		}
-
-		if (leftClampScreenPos.y < Screen.height)
-		{
-			float deltaFactor = (Screen.height - leftClampScreenPos.y) * worldSizePerPixel;
-			Vector3 delta = new Vector3(-deltaFactor, 0, -deltaFactor);
-			this.MainCamera.transform.localPosition += delta;
-		}
-		//clamp camera right and bottom
-		Vector3 rightClampScreenPos = this.MainCamera.WorldToScreenPoint(CameraBoundScript.instance.CameraClampBottomRightPosition);
-
-		if (rightClampScreenPos.x < Screen.width)
-		{
-			float deltaFactor = (rightClampScreenPos.x - Screen.width) * worldSizePerPixel;
-			Vector3 delta = new Vector3(deltaFactor, 0, 0);
-			delta = this.MainCamera.transform.TransformVector(delta);
-			this.MainCamera.transform.localPosition += delta;
-		}
-
-		if (rightClampScreenPos.y > 0)
-		{
-			float deltaFactor = rightClampScreenPos.y * worldSizePerPixel;
-			Vector3 delta = new Vector3(deltaFactor, 0, deltaFactor);
-			this.MainCamera.transform.localPosition += delta;
-		}
-	}
     
     /* SHAKE SCRIPT */
 
