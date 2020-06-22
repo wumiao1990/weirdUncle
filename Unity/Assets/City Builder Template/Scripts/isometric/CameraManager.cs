@@ -66,11 +66,18 @@ public class CameraManager : MonoBehaviour
 		instance = this;
 		this._layerMaskBaseItemCollider = LayerMask.GetMask("BaseItemCollider");
 		this._layerMaskGroundCollider = LayerMask.GetMask("GroundCollider");
-		
+        		
 		CEventTouchDistrubtion.RegisterDownEvent(onBackInputDown);
 		CEventTouchDistrubtion.RegisterUpEvent(onBackInputUp);
 	}
-	
+
+	private void OnDestroy()
+	{
+		instance = null;
+		CEventTouchDistrubtion.UnRegisterUpEvent(onBackInputDown);
+		CEventTouchDistrubtion.UnRegisterUpEvent(onBackInputUp);
+	}
+
 	bool _isDown = false;
     Vector2 _v2Down = Vector2.zero;
     float _DragDis = 0;
@@ -88,7 +95,7 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-	        if(_tapStartRaycastedItem != null)
+	        if(instance._tapStartRaycastedItem != null)
 	        {
 		        return;
 	        }
@@ -97,13 +104,13 @@ public class CameraManager : MonoBehaviour
 
             if (_DragDis > thredhold)
             {
-                Vector3 oldpos = transform.position;
-                transform.position += new Vector3(-CEventTouchDistrubtion.CurTouch.deltaPosition.x / 100.0f,
+	            Vector3 oldpos = instance.MainCamera.transform.position;
+	            instance.MainCamera.transform.position += new Vector3(-CEventTouchDistrubtion.CurTouch.deltaPosition.x / 100.0f,
                                                             CEventTouchDistrubtion.CurTouch.deltaPosition.y / 100.0f,
                                                             0);
-                Vector3 pos = transform.position;
-                pos.x = Mathf.Clamp(pos.x, 7, 20);
-                transform.position = new Vector3(pos.x, 3.95f, transform.position.z);
+                Vector3 pos = instance.MainCamera.transform.position;
+                pos.x = Mathf.Clamp(pos.x, 8, 20);
+                instance.MainCamera.transform.position = new Vector3(pos.x, 3.95f, instance.MainCamera.transform.position.z);
             }
         }
     }

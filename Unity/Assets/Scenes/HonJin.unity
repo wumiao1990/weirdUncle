@@ -1053,8 +1053,6 @@ GameObject:
   - component: {fileID: 402505023}
   - component: {fileID: 402505022}
   - component: {fileID: 402505019}
-  - component: {fileID: 402505021}
-  - component: {fileID: 402505020}
   m_Layer: 0
   m_Name: HONJIN_Camera
   m_TagString: MainCamera
@@ -1076,68 +1074,6 @@ MonoBehaviour:
   MainCamera: {fileID: 402505022}
   debugText: {fileID: 479004860}
   EventSystem: {fileID: 1751538653}
---- !u!114 &402505020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 402505018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e25d116a3de8f8b4c828a127e7521acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &402505021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 402505018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42241010c6f9ddc46b78abdc21d505c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enable: 1
-  enableRemote: 0
-  useBroadcastMessage: 0
-  receiverObject: {fileID: 402505018}
-  isExtension: 0
-  enable2FingersGesture: 1
-  enableTwist: 1
-  enablePinch: 1
-  touchCameras: []
-  autoSelect: 0
-  pickableLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  enable2D: 0
-  pickableLayers2D:
-    serializedVersion: 2
-    m_Bits: 0
-  StationnaryTolerance: 25
-  longTapTime: 1
-  swipeTolerance: 0.85
-  minPinchLength: 0
-  minTwistAngle: 1
-  enabledNGuiMode: 0
-  nGUILayers:
-    serializedVersion: 2
-    m_Bits: 0
-  nGUICameras: []
-  enabledUGUIMode: 0
-  reservedAreas: []
-  reservedVirtualAreas: []
-  reservedGuiAreas: []
-  enableReservedArea: 1
-  twistKey: 308
-  swipeKey: 306
-  showGeneral: 1
-  showSelect: 1
-  showGesture: 1
-  showTwoFinger: 1
-  showSecondFinger: 1
-  secondFingerTexture: {fileID: 0}
 --- !u!20 &402505022
 Camera:
   m_ObjectHideFlags: 0
@@ -1191,6 +1127,98 @@ Transform:
   - {fileID: 1826017691}
   m_Father: {fileID: 1373564528}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &449957348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 449957351}
+  - component: {fileID: 449957350}
+  - component: {fileID: 449957349}
+  m_Layer: 0
+  m_Name: EasyTouch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &449957349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 449957348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25d116a3de8f8b4c828a127e7521acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &449957350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 449957348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42241010c6f9ddc46b78abdc21d505c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enable: 1
+  enableRemote: 0
+  useBroadcastMessage: 0
+  receiverObject: {fileID: 0}
+  isExtension: 0
+  enable2FingersGesture: 1
+  enableTwist: 1
+  enablePinch: 1
+  touchCameras: []
+  autoSelect: 0
+  pickableLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  enable2D: 0
+  pickableLayers2D:
+    serializedVersion: 2
+    m_Bits: 0
+  StationnaryTolerance: 25
+  longTapTime: 1
+  swipeTolerance: 0.85
+  minPinchLength: 0
+  minTwistAngle: 1
+  enabledNGuiMode: 0
+  nGUILayers:
+    serializedVersion: 2
+    m_Bits: 0
+  nGUICameras: []
+  enabledUGUIMode: 0
+  reservedAreas: []
+  reservedVirtualAreas: []
+  reservedGuiAreas: []
+  enableReservedArea: 1
+  twistKey: 308
+  swipeKey: 306
+  showGeneral: 1
+  showSelect: 1
+  showGesture: 1
+  showTwoFinger: 1
+  showSecondFinger: 1
+  secondFingerTexture: {fileID: 0}
+--- !u!4 &449957351
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 449957348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8345087, y: 2.7350006, z: 17.730469}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479004858
 GameObject:

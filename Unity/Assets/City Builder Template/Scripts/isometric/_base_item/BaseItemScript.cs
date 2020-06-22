@@ -328,7 +328,6 @@ public class BaseItemScript : MonoBehaviour
 
 		if (point != this.transform.localPosition)
 		{
-			Debug.LogError("OnItemDrag x:" + Mathf.Floor(point.x) + " y:" + Mathf.Floor(point.y));
 			this.SetPosition(new Vector3(Mathf.Floor(point.x), Mathf.Floor(point.y), 0));
 			this.UpdateConnectedItems();
 
