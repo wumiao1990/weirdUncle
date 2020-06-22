@@ -590,6 +590,7 @@ public class BaseItemScript : MonoBehaviour
 
 	public void UpdateWall()
 	{
+		return;
 		bool hasRighNeighbourWall = false;
 		bool hasLeftNeighbourWall = false;
 		bool hasTopNeighbourWall = false;

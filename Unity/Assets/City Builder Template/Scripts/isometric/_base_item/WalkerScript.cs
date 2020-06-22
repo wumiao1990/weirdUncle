@@ -84,30 +84,30 @@ public class WalkerScript : MonoBehaviour
 	{
 		this.CancelWalk();
 
-		if (SceneManager.instance.gameMode == Common.GameMode.NORMAL)
-		{
-			//on user city walls are not considered
-			this.WalkThePath(GroundManager.instance.GetPath(this.transform.position, position, false));
-
-		}
-		else if (SceneManager.instance.gameMode == Common.GameMode.ATTACK)
-		{
-			GroundManager.Path pathWithoutWalls = GroundManager.instance.GetPath(this.transform.position, position, false);
-			GroundManager.Path pathWithWalls = GroundManager.instance.GetPath(this.transform.position, position, true);
-
-			//			Debug.Log (pathWithWalls.GetDistanceAlongPath ());
-			//			Debug.Log (pathWithoutWalls.GetDistanceAlongPath ());
-
-			float difference = pathWithWalls.GetDistanceAlongPath() - pathWithoutWalls.GetDistanceAlongPath();
-			if (difference > 0 && difference <= 4)
-			{
-				this.WalkThePath(pathWithWalls);
-			}
-			else
-			{
-				this.WalkThePath(pathWithoutWalls);
-			}
-		}
+//		if (SceneManager.instance.gameMode == Common.GameMode.NORMAL)
+//		{
+//			//on user city walls are not considered
+//			this.WalkThePath(GroundManager.instance.GetPath(this.transform.position, position, false));
+//
+//		}
+//		else if (SceneManager.instance.gameMode == Common.GameMode.ATTACK)
+//		{
+//			GroundManager.Path pathWithoutWalls = GroundManager.instance.GetPath(this.transform.position, position, false);
+//			GroundManager.Path pathWithWalls = GroundManager.instance.GetPath(this.transform.position, position, true);
+//
+//			//			Debug.Log (pathWithWalls.GetDistanceAlongPath ());
+//			//			Debug.Log (pathWithoutWalls.GetDistanceAlongPath ());
+//
+//			float difference = pathWithWalls.GetDistanceAlongPath() - pathWithoutWalls.GetDistanceAlongPath();
+//			if (difference > 0 && difference <= 4)
+//			{
+//				this.WalkThePath(pathWithWalls);
+//			}
+//			else
+//			{
+//				this.WalkThePath(pathWithoutWalls);
+//			}
+//		}
 	}
 
 	private GroundManager.Path _path;
