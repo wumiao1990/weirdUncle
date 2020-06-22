@@ -66,7 +66,64 @@ public class CameraManager : MonoBehaviour
 		instance = this;
 		this._layerMaskBaseItemCollider = LayerMask.GetMask("BaseItemCollider");
 		this._layerMaskGroundCollider = LayerMask.GetMask("GroundCollider");
+		
+		CEventTouchDistrubtion.RegisterDownEvent(onBackInputDown);
+		CEventTouchDistrubtion.RegisterUpEvent(onBackInputUp);
 	}
+	
+	bool _isDown = false;
+    Vector2 _v2Down = Vector2.zero;
+    float _DragDis = 0;
+    bool _isFull = false;
+    private float thredhold = 2;
+
+    void onBackInputDown(BaseTouchSystem.Gesture _selection)
+    {
+        if (!_isDown)
+        {
+            _isDown = true;
+            _v2Down = _selection.startPosition;
+            _DragDis = 0;
+
+        }
+        else
+        {
+	        if(_tapStartRaycastedItem != null)
+	        {
+		        return;
+	        }
+            _v2Down += CEventTouchDistrubtion.CurTouch.deltaPosition;            
+            _DragDis += Vector2.SqrMagnitude(CEventTouchDistrubtion.CurTouch.deltaPosition);
+
+            if (_DragDis > thredhold)
+            {
+                Vector3 oldpos = transform.position;
+                transform.position += new Vector3(-CEventTouchDistrubtion.CurTouch.deltaPosition.x / 100.0f,
+                                                            CEventTouchDistrubtion.CurTouch.deltaPosition.y / 100.0f,
+                                                            0);
+                Vector3 pos = transform.position;
+                pos.x = Mathf.Clamp(pos.x, 7, 20);
+                transform.position = new Vector3(pos.x, 3.95f, transform.position.z);
+            }
+        }
+    }
+
+    void onBackInputUp(BaseTouchSystem.Gesture _selection)
+    {
+        if (_isDown)
+        {
+            //  点击
+            if (_DragDis < thredhold)
+            {
+            }
+            else
+            {
+                //  拖动
+            }
+
+            _isDown = false;
+        }
+    }
 
 	void Update()
 	{
@@ -382,7 +439,7 @@ public class CameraManager : MonoBehaviour
 			return;
 		}
 		
-		OnScenePan();
+		//OnScenePan();
 	}
 
 	private Vector3 _touchPoint1;
