@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23422937750137844}
   - component: {fileID: 114182603821789132}
   - component: {fileID: 65916447116620878}
+  - component: {fileID: 114288656357066056}
   m_Layer: 0
   m_Name: daji
   m_TagString: Untagged
@@ -122,3 +123,15 @@ MonoBehaviour:
   _animationName: 
   loop: 0
   timeScale: 1
+--- !u!114 &114288656357066056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297080599796676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252a6c880ec67844b9517e5874260bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movePos: []

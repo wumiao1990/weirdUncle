@@ -3572,6 +3572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1373564528}
   - component: {fileID: 1373564529}
+  - component: {fileID: 1373564530}
   m_Layer: 10
   m_Name: HONJIN
   m_TagString: honjinRoot
@@ -3603,6 +3604,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a40c119e5e9a2af438395cc3b5b8e7e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listSDModel:
+  - Path: ABRes/PlayGround/art/sd-card/guangguo
+    initalPos: {x: 0, y: 0, z: 0}
+    movePos:
+    - {x: -5, y: -3, z: 0}
+    - {x: 5, y: -2, z: 0}
+  - Path: ABRes/PlayGround/art/sd-card/daji
+    initalPos: {x: 1, y: 0, z: 0}
+    movePos:
+    - {x: -4, y: -2, z: 0}
+    - {x: 4, y: -1, z: 0}
+--- !u!114 &1373564530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1373564527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42346b16ad279c245858f68f116a413a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startPostObj: {fileID: 926795313}

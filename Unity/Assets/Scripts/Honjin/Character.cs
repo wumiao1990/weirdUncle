@@ -7,16 +7,11 @@ public class Character : MonoBehaviour {
 
 	private float MoveSpeed = 1.5f;
 	private SkeletonAnimation sa;
+	public List<Vector3> movePos;
 	
 	// Use this for initialization
 	void Awake () {
 		sa = gameObject.GetComponent<SkeletonAnimation>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-
 	}
 
 	public void SetAnimation(string name)
@@ -28,6 +23,24 @@ public class Character : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		MoveSD();
+	}
+
+	private float waitTime = 5f;
+
+	private float stayTime = 0;
+
+	private bool isMove = false;
+	// Update is called once per frame
+	void Update ()
+	{
+		if (!isMove)
+		{
+			isMove = true;
+			stayTime = 0;
+			int r = Random.Range(0, movePos.Count);
+			Target = movePos[r];
+			StartMove(Target);
+		}
 	}
 
 	// Update is called once per frame
@@ -50,9 +63,14 @@ public class Character : MonoBehaviour {
 	void MoveSD()
 	{
 		gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, Target, MoveSpeed * Time.deltaTime);
-		if (Target == gameObject.transform.position)
+		if (Target == gameObject.transform.position && isMove)
 		{
 			SetAnimation("B_idle01");
+			stayTime += Time.deltaTime;
+			if (stayTime >= waitTime)
+			{
+				isMove = false;
+			}
 		}
 	}
 	
