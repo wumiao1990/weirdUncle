@@ -7,7 +7,7 @@ public class Character : MonoBehaviour {
 
 	private float MoveSpeed = 1.5f;
 	private SkeletonAnimation sa;
-	public List<Vector3> movePos;
+	private List<Vector3> movePos;
 	
 	// Use this for initialization
 	void Awake () {
@@ -25,7 +25,7 @@ public class Character : MonoBehaviour {
 		MoveSD();
 	}
 
-	private float waitTime = 5f;
+	private float waitTime = 1f;
 
 	private float stayTime = 0;
 
@@ -38,17 +38,37 @@ public class Character : MonoBehaviour {
 			isMove = true;
 			stayTime = 0;
 			int r = Random.Range(0, movePos.Count);
-			Target = movePos[r];
+			Target = GetTargetPos();
 			StartMove(Target);
 		}
 	}
 
+	Vector3 GetTargetPos()
+	{
+		int r = Random.Range(0, movePos.Count);
+		Vector3 tarpos = movePos[r];
+		if (tarpos == Target)
+		{
+			return GetTargetPos();
+		}
+		else
+		{
+			return tarpos;
+		}
+	}
+
+	public void SetData(SDModel model)
+	{
+		movePos = model.movePos;
+		waitTime = model.waitTime;
+		MoveSpeed = model.speed;
+	}
 	// Update is called once per frame
 	Vector3 Target = Vector3.zero;
 	public void StartMove(Vector3 sdTarget)
 	{
 		Target = sdTarget;
-		if (gameObject.transform.position.x > Target.x)
+		if (gameObject.transform.localPosition.x > Target.x)
 		{
 			gameObject.transform.rotation = new Quaternion(0, -200, 0, 0);
 		}
@@ -62,8 +82,8 @@ public class Character : MonoBehaviour {
 
 	void MoveSD()
 	{
-		gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, Target, MoveSpeed * Time.deltaTime);
-		if (Target == gameObject.transform.position && isMove)
+		gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, Target, MoveSpeed * Time.deltaTime);
+		if (Target == gameObject.transform.localPosition && isMove)
 		{
 			SetAnimation("B_idle01");
 			stayTime += Time.deltaTime;
