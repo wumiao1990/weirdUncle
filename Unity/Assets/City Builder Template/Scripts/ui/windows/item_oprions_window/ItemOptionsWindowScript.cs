@@ -46,7 +46,7 @@ public class ItemOptionsWindowScript : WindowScript {
 		haveRemoveButton = true;
 
 		InfoButton.SetActive(haveInfoButton);
-		UpgradeButton.SetActive(haveUpgradeButton);
+		UpgradeButton.SetActive(false);
 		TrainButton.SetActive(haveTrainButton);
 		RemoveButton.SetActive(haveRemoveButton);
 

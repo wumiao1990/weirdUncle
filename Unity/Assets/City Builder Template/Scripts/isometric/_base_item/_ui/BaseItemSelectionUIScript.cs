@@ -41,7 +41,7 @@ public class BaseItemSelectionUIScript : MonoBehaviour
 		this.LevelLabel.text = this.LevelLabelShadow.text = "Level 1";
 
 		this.Grid.transform.localScale = this.Grid.transform.localScale / baseSize.x;
-		this.Grid.size = new Vector2(baseSize.x, baseSize.z);
+		this.Grid.size = new Vector2(baseSize.x, baseSize.y);
 		this.ShowGrid(false);
 	}
 

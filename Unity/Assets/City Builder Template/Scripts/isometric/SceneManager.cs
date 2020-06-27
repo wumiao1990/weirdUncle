@@ -80,17 +80,18 @@ public class SceneManager : MonoBehaviour
 	{
 		BaseItemScript builder = null;
 
+		Debug.LogError("CreateItemID:" + itemId);
 		if (!immediate)
 		{
-			builder = this.GetFreeBuilder();
-			if (builder == null)
-			{
-				Debug.Log("All builders are busy!");
-				UIManager.instance.ShowBuildersBusyWindow();
-				return null;
-			}
+//			builder = this.GetFreeBuilder();
+//			if (builder == null)
+//			{
+//				Debug.Log("All builders are busy!");
+//				UIManager.instance.ShowBuildersBusyWindow();
+//				return null;
+//			}
 		}
-
+		
 		BaseItemScript instance = Utilities.CreateInstance(this.BaseItem, this.ItemsContainer, true).GetComponent<BaseItemScript>();
 
 		if (instanceId == -1)
@@ -113,7 +114,11 @@ public class SceneManager : MonoBehaviour
 
 			if (!instance.itemData.configuration.isCharacter && instance.itemData.configuration.buildTime > 0)
 			{
-				builder.BuilderAction(instance);
+				if (builder !=null)
+				{
+					builder.BuilderAction(instance);
+				}
+				
 			}
 		}
 

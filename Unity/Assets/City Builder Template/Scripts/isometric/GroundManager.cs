@@ -31,7 +31,7 @@ public class GroundManager : MonoBehaviour {
 	/* public variables */
 	public bool showNodes;
 
-	public const int nodeWidth = 30;
+	public const int nodeWidth = 18;
 	public const int nodeHeight = 3;
 	
 	public const int startX = 0;
@@ -102,6 +102,7 @@ public class GroundManager : MonoBehaviour {
 
 		int x = (int)(pos.x);
 		int y = (int)(pos.y);
+
 		int sizeX = (int)item.GetSize ().x;
 		int sizeY = (int)item.GetSize ().y;
 
@@ -136,9 +137,13 @@ public class GroundManager : MonoBehaviour {
 						this.pathNodesWithWall [indexX, indexY] = true;
 					}
 				}
+				
+				
 
 			}
 		}
+		
+		
 	}
 
 	public Path GetPath(Vector3 startPoint, Vector3 endPoint, bool considerWalls){
@@ -222,9 +227,9 @@ public class GroundManager : MonoBehaviour {
 	public bool IsPositionPlacable(Vector3 position, int sizeX, int sizeY, int instanceId){
 		int posX = (int)position.x;
 		int posY = (int)position.y;
-
 		for (int indexX = posX; indexX < posX + sizeX; indexX++) {
 			for (int indexY = posY; indexY < posY + sizeY; indexY++) {
+				
 				if (indexX < 0 || indexX >= nodeWidth || indexY < 0 || indexY >= nodeHeight) {
 					//outside grid
 					return false;
@@ -236,6 +241,7 @@ public class GroundManager : MonoBehaviour {
 
 			}
 		}
+		
 		return true;
 	}
 

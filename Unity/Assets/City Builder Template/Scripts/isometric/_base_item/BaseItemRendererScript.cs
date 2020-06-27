@@ -9,6 +9,7 @@ public class BaseItemRendererScript : MonoBehaviour
 	public BaseItemScript BaseItem;
 	public GameObject RenderQuadsContainer;
 
+	public GameObject RenderGameobject;
 	/* private vars */
 	private List<RenderQuadScript> _renderQuads;
 	private Common.Direction _oldDirection = Common.Direction.BOTTOM;
@@ -24,19 +25,27 @@ public class BaseItemRendererScript : MonoBehaviour
 //		GameObject skeletonGo = this.BaseItem.itemData.thumb;
 //		Utilities.CreateInstance(skeletonGo, RenderQuadsContainer, true);
 		
-		string path = "ABRes/PlayGround/art/sd-event/caiji";
+		string path = "ABRes/PlayGround/art/sd-event/"+ this.BaseItem.itemData.name;
 		GameObject skeletonGo = AssetBundleManager.Instance.InstantiatePrefab<GameObject>(path);
+		if (skeletonGo == null)
+		{
+			return;
+		}
 		skeletonGo.transform.parent = RenderQuadsContainer.transform;
 		skeletonGo.gameObject.transform.localPosition = Vector3.zero;
 		skeletonGo.gameObject.transform.localScale = Vector3.one;
 		skeletonGo.gameObject.transform.localRotation = new Quaternion(0,0,0,0);
+		RenderGameobject = skeletonGo;
 		
 		SkeletonAnimation sa = skeletonGo.GetComponent<SkeletonAnimation>();
-		Character ct = skeletonGo.GetComponent<Character>();
-		sa.skeletonDataAsset = GameObject.Instantiate<SkeletonDataAsset>(sa.skeletonDataAsset);
-		sa.initialSkinName = sa.initialSkinName;
-		sa.loop = true;
-		sa.Initialize(true);
+		if (sa != null)
+		{
+			Character ct = skeletonGo.GetComponent<Character>();
+			sa.skeletonDataAsset = GameObject.Instantiate<SkeletonDataAsset>(sa.skeletonDataAsset);
+			sa.initialSkinName = sa.initialSkinName;
+			sa.loop = true;
+			sa.Initialize(true);
+		}
 		
 		RenderQuadsContainer.transform.localRotation = new Quaternion(0,0,0,0);
 		//this.RenderQuadsContainer.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);

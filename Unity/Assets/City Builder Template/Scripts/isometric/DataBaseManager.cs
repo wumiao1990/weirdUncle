@@ -294,11 +294,11 @@ public class DataBaseManager : MonoBehaviour
 
 	public SceneData GetScene()
 	{
-		if (this._gameData.sceneData.items.Count == 0)
-		{
-			this._gameData.sceneData = JsonUtility.FromJson<SceneData>(this._defaultSceneData);
-			this.SaveDataBase();
-		}
+//		if (this._gameData.sceneData.items.Count == 0)
+//		{
+//			this._gameData.sceneData = JsonUtility.FromJson<SceneData>(this._defaultSceneData);
+//			this.SaveDataBase();
+//		}
 		return this._gameData.sceneData;
 	}
 

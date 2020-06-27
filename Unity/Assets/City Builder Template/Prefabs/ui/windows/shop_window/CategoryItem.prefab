@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf8cadd803f943ddaab128132f570ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArmySprite: {fileID: 21300000, guid: 0816dd0b6ccc748e398158547278964a, type: 3}
-  DefenceSprite: {fileID: 21300000, guid: f4150dfeae9f048ba8e344f742605333, type: 3}
-  OtherSprite: {fileID: 21300000, guid: a7ded6494a13241f5ac1bed1d47b7959, type: 3}
+  ArmySprite: {fileID: 21300000, guid: 8e60016f33aa1684991df8c45fdc0943, type: 3}
+  DecorationsSprite: {fileID: 21300000, guid: da5c24bc0512922439bfef36141eca1c, type: 3}
+  DefenceSprite: {fileID: 21300000, guid: 731be1a1c91f3ac49a5e7bf187f4799d, type: 3}
+  OtherSprite: {fileID: 21300000, guid: 731be1a1c91f3ac49a5e7bf187f4799d, type: 3}
   ResourcesSprite: {fileID: 21300000, guid: de4ac145624c04fe8ade461e4ff9d5a9, type: 3}
   TreasureSprite: {fileID: 21300000, guid: 951dee72d1d1d4fc48951162a3e2eba3, type: 3}
-  DecorationsSprite: {fileID: 21300000, guid: 4975f0eb3344b4453b6d39a0390970a0, type: 3}
   Name: {fileID: 114956034562661668}
   Image: {fileID: 114960140593979912}
 --- !u!114 &114451481648558476

@@ -69,6 +69,24 @@ public class BaseItemScript : MonoBehaviour
 
 	public void SetItemData(int itemId, int posX, int posY)
 	{
+		this.gameObject.GetComponent<BoxCollider>().enabled = true;
+		if (itemId == 3823)
+		{
+			this.gameObject.GetComponent<BoxCollider>().center = new Vector3(0.5f, 1f,0.5f);
+			this.gameObject.GetComponent<BoxCollider>().size = new Vector3(1.96f, 3.25f,0.2f);
+			
+		}
+		else if (itemId == 8833)
+		{
+			this.gameObject.GetComponent<BoxCollider>().center = new Vector3(0.5f, 1.5f,0.5f);
+			this.gameObject.GetComponent<BoxCollider>().size = new Vector3(3.26f, 2.31f,0.2f);
+		}
+		else
+		{
+			this.gameObject.GetComponent<BoxCollider>().center = new Vector3(0.5f, 1.26f,0.5f);
+			this.gameObject.GetComponent<BoxCollider>().size = new Vector3(3.26f, 2.31f,0.2f);
+		}
+		
 		this.itemData = Items.GetItem(itemId);
 		this.gameObject.name = itemData.name + " [INSTANCE]";
 		this.SetSize(Vector3.one * itemData.gridSize);
@@ -93,7 +111,7 @@ public class BaseItemScript : MonoBehaviour
 		}
 
 		//disable box collider for characters, otherwise characters can select by tap
-		this.BoxCollider.enabled = !this.itemData.configuration.isCharacter;
+		//this.BoxCollider.enabled = !this.itemData.configuration.isCharacter;
 
 		this.SetPosition(new Vector3(posX, posY, 0));
 		this.UpdateConnectedItems();
@@ -249,7 +267,7 @@ public class BaseItemScript : MonoBehaviour
 	/// <returns>The position.</returns>
 	public Vector3 GetSize()
 	{
-		return new Vector3(this.transform.localScale.x, 0, this.transform.localScale.z);
+		return new Vector3(this.transform.localScale.x, this.transform.localScale.y,0);
 	}
 
 	/// <summary>
@@ -332,6 +350,7 @@ public class BaseItemScript : MonoBehaviour
 			this.UpdateConnectedItems();
 
 			bool isPlacable = _IsInPlacablePosition();
+			Renderer.RenderGameobject.transform.Find("image").GetComponent<SpriteRenderer>().sortingOrder = 2 - (int)point.y;
 			if (isPlacable)
 			{
 				this.UI.selectionUIInstance.SetGridColor(Color.green);

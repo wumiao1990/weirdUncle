@@ -67,6 +67,10 @@ public class ShopWindowScript : WindowScript {
 		};
 
 		for (int index = 0; index < categories.Length; index++) {
+			if (index == 3)
+			{
+				break;
+			}
 			GameObject inst = Utilities.CreateInstance (this.CategoryItem, this.ItemsList, true);
 			inst.GetComponent<CategoryItemScript> ().SetCategory (categories [index]);
 		}
