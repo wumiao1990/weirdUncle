@@ -77,14 +77,14 @@ public class Character : MonoBehaviour {
 
 	public void SetTargetPos(Vector3 target)
 	{
-		Target = target;
+		Target = new Vector3(target.x - 1, target.y, target.z);
 		if (gameObject.transform.localPosition.x > Target.x)
 		{
-			gameObject.transform.rotation = new Quaternion(0, -200, 0, 0);
+			gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
 		}
 		else
 		{
-			gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+			gameObject.transform.rotation = new Quaternion(0, -200, 0, 0);
 		}
 		st = State.work;
 	}
