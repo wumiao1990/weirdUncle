@@ -31,8 +31,8 @@ public class GroundManager : MonoBehaviour {
 	/* public variables */
 	public bool showNodes;
 
-	public const int nodeWidth = 18;
-	public const int nodeHeight = 3;
+	public const int nodeWidth = 23;
+	public const int nodeHeight = 5;
 	
 	public const int startX = 0;
 	public const int startY = 0;

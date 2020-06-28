@@ -30,6 +30,7 @@ public class HonjinManager : MonoBehaviour
 			sa.loop = true;
 			sa.Initialize(true);
 			sa.gameObject.transform.localPosition = listSDModel[i].initalPos;
+			ct.Target = listSDModel[i].initalPos;
 			ct.SetData(listSDModel[i]);
 			listSkeletonAnimation.Add(sa);
 
@@ -41,7 +42,7 @@ public class HonjinManager : MonoBehaviour
 			{
 				dicSDModel.Add(8833, ct);
 			}
-			else if(path.Contains("zhou"))
+			else if(path.Contains("zhou_2"))
 			{
 				dicSDModel.Add(6871, ct);
 			}

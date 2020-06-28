@@ -9,8 +9,9 @@ public class Character : MonoBehaviour {
 	private float MoveSpeed = 1.5f;
 	private SkeletonAnimation sa;
 	private List<Vector3> movePos;
+	public Vector3 initalPos;
 	private MeshRenderer _meshRenderer;
-	private State st = State.B_idle01;
+	public State st = State.B_idle01;
 	public enum State
 	{
 		B_idle01,
@@ -71,6 +72,7 @@ public class Character : MonoBehaviour {
 		movePos = model.movePos;
 		waitTime = model.waitTime;
 		MoveSpeed = model.speed;
+		initalPos = model.initalPos;
 	}
 
 	public void SetTargetPos(Vector3 target)
@@ -88,7 +90,7 @@ public class Character : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	Vector3 Target = Vector3.zero;
+	public Vector3 Target = Vector3.zero;
 	public void StartMove(Vector3 sdTarget)
 	{
 		Target = sdTarget;

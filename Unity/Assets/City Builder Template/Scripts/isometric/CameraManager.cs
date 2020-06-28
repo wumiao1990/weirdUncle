@@ -60,7 +60,8 @@ public class CameraManager : MonoBehaviour
 	private bool _isPanningScene;
 
 	private BaseItemScript _selectedBaseItem;
-
+	private float leftx = 10;
+	private float rightx = 20;
 	void Awake()
 	{
 		instance = this;
@@ -69,6 +70,13 @@ public class CameraManager : MonoBehaviour
         		
 		CEventTouchDistrubtion.RegisterDownEvent(onBackInputDown);
 		CEventTouchDistrubtion.RegisterUpEvent(onBackInputUp);
+	}
+
+	private void Start()
+	{
+		Vector3 pos = MainCamera.transform.position;
+		pos.x = Mathf.Clamp(pos.x, leftx, rightx);
+		MainCamera.transform.position = new Vector3(pos.x, 3.95f, instance.MainCamera.transform.position.z);
 	}
 
 	private void OnDestroy()
@@ -83,7 +91,6 @@ public class CameraManager : MonoBehaviour
     float _DragDis = 0;
     bool _isFull = false;
     private float thredhold = 2;
-
     void onBackInputDown(BaseTouchSystem.Gesture _selection)
     {
         if (!_isDown)
@@ -109,7 +116,7 @@ public class CameraManager : MonoBehaviour
                                                             CEventTouchDistrubtion.CurTouch.deltaPosition.y / 100.0f,
                                                             0);
                 Vector3 pos = instance.MainCamera.transform.position;
-                pos.x = Mathf.Clamp(pos.x, 8, 20);
+                pos.x = Mathf.Clamp(pos.x, leftx, rightx);
                 instance.MainCamera.transform.position = new Vector3(pos.x, 3.95f, instance.MainCamera.transform.position.z);
             }
         }
@@ -144,6 +151,11 @@ public class CameraManager : MonoBehaviour
 		this.UpdateGroundTap();
 		this.UpdateScenePan();
 		//this.UpdateSceneZoom();
+
+		float v = (float) Screen.height / (float) Screen.width;
+		leftx = 15 - (v * 12);
+		rightx = 13 + (v * 12);
+		
 	}
 
 	public bool IsUsingUI()
