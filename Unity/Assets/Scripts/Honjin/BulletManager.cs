@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using Spine;
+using Spine.Unity;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour {
 
 	public GameObject startPostObj;
+
+	public SkeletonAnimation sa;
 	// Use this for initialization
 	void Start () {
-		
+		sa.skeletonDataAsset = GameObject.Instantiate<SkeletonDataAsset>(sa.skeletonDataAsset);
+		sa.Initialize(true);	
 	}
 	
 	void Update () 
@@ -32,5 +38,9 @@ public class BulletManager : MonoBehaviour {
 		Bullet bullet = gobullet.GetComponent<Bullet>();
 		bullet.pointA = startPostObj.transform.position;
 		bullet.pointB = targetPos;
+
+		sa.AnimationName = "mv1";
+		TrackEntry yanTrack = sa.state.SetAnimation(0, "mv1", false);
+		yanTrack.TimeScale = 1;
 	}
 }

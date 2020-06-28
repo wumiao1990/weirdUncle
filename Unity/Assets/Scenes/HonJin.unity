@@ -1726,6 +1726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1373564528}
   - component: {fileID: 1373564529}
+  - component: {fileID: 1373564530}
   m_Layer: 0
   m_Name: HONJIN
   m_TagString: honjinRoot
@@ -1789,6 +1790,28 @@ MonoBehaviour:
     movePos:
     - {x: 7, y: 1, z: 0}
     - {x: 6, y: 0, z: 0}
+--- !u!114 &1373564530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1373564527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b990a5f868a4bdab4c4829e12d80b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioListener: {fileID: 1658673788}
+  BGM: {fileID: 8300000, guid: 257130b391da1bc45953244884494608, type: 3}
+  Tap1: {fileID: 0}
+  Tap2: {fileID: 0}
+  TapOnItem: {fileID: 0}
+  Builder: {fileID: 0}
+  Button: {fileID: 0}
+  Collect: {fileID: 0}
+  Yeah: {fileID: 0}
+  Sword: {fileID: 0}
+  Bow: {fileID: 0}
 --- !u!1 &1375743416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2023,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1658673788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1658673790}
+  - component: {fileID: 1658673789}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1658673789
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1658673788}
+  m_Enabled: 1
+--- !u!4 &1658673790
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1658673788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7049062, y: -1.4036413, z: 19.416016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1705368624
 GameObject:
   m_ObjectHideFlags: 0

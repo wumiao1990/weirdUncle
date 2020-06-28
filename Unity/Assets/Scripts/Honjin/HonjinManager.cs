@@ -26,6 +26,7 @@ public class HonjinManager : MonoBehaviour
 		
 			sa.skeletonDataAsset = GameObject.Instantiate<SkeletonDataAsset>(sa.skeletonDataAsset);
 			sa.initialSkinName = sa.initialSkinName;
+			sa.AnimationName = "B_walk";
 			sa.loop = true;
 			sa.Initialize(true);
 			sa.gameObject.transform.localPosition = listSDModel[i].initalPos;
@@ -46,8 +47,26 @@ public class HonjinManager : MonoBehaviour
 			}
 			//sa.AnimationName = "B_walk";//B_sit01,B_eat,B_walk,B_idle01
 		}
+		
+		SoundManager.instance.StopAllSounds();
+		SoundManager.instance.PlaySound(SoundManager.instance.BGM, true);
 	}
-	
+
+	private void Update()
+	{
+//		if (Input.GetMouseButtonDown(0)) {//鼠标左键按下
+//			if (this.s.isPlaying)
+//			{
+//				this.s.Pause();
+//			}
+//			else {
+//				this.s.Play();
+//			}
+//		}
+//		if (Input.GetMouseButtonDown(1)) {//鼠标右键按下
+//			this.s.Stop();
+//		}
+	}
 }
 
 [Serializable]

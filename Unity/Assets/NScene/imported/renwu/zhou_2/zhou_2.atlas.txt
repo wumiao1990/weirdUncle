@@ -1,0 +1,62 @@
+
+zhou_2.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fuzi
+  rotate: true
+  xy: 2, 33
+  size: 133, 319
+  orig: 133, 319
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: true
+  xy: 291, 175
+  size: 58, 67
+  orig: 58, 67
+  offset: 0, 0
+  index: -1
+tou_2
+  rotate: false
+  xy: 291, 235
+  size: 334, 262
+  orig: 334, 262
+  offset: 0, 0
+  index: -1
+youshou_2
+  rotate: false
+  xy: 2, 168
+  size: 287, 329
+  orig: 287, 329
+  offset: 0, 0
+  index: -1
+youtui
+  rotate: true
+  xy: 2, 2
+  size: 29, 54
+  orig: 29, 54
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: false
+  xy: 627, 244
+  size: 63, 72
+  orig: 63, 72
+  offset: 0, 0
+  index: -1
+zuotui
+  rotate: false
+  xy: 976, 442
+  size: 31, 55
+  orig: 31, 55
+  offset: 0, 0
+  index: -1
+zzz
+  rotate: false
+  xy: 627, 318
+  size: 347, 179
+  orig: 347, 179
+  offset: 0, 0
+  index: -1

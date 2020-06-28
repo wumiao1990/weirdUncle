@@ -1,0 +1,76 @@
+
+banci.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fuzi
+  rotate: true
+  xy: 574, 133
+  size: 121, 248
+  orig: 121, 248
+  offset: 0, 0
+  index: -1
+lian
+  rotate: false
+  xy: 351, 44
+  size: 221, 210
+  orig: 221, 210
+  offset: 0, 0
+  index: -1
+pifeng
+  rotate: false
+  xy: 824, 152
+  size: 127, 102
+  orig: 127, 102
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: false
+  xy: 720, 31
+  size: 74, 100
+  orig: 74, 100
+  offset: 0, 0
+  index: -1
+wa
+  rotate: true
+  xy: 574, 2
+  size: 129, 144
+  orig: 129, 144
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: false
+  xy: 2, 17
+  size: 68, 56
+  orig: 68, 56
+  offset: 0, 0
+  index: -1
+youtui
+  rotate: true
+  xy: 953, 215
+  size: 39, 69
+  orig: 39, 69
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: true
+  xy: 953, 159
+  size: 54, 67
+  orig: 54, 67
+  offset: 0, 0
+  index: -1
+zuotui
+  rotate: true
+  xy: 72, 32
+  size: 41, 66
+  orig: 41, 66
+  offset: 0, 0
+  index: -1
+zzz
+  rotate: false
+  xy: 2, 75
+  size: 347, 179
+  orig: 347, 179
+  offset: 0, 0
+  index: -1

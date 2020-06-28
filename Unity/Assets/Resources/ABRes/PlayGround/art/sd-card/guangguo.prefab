@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: b53bb5b20a645554896fe5eec557781e, type: 2}
-  initialSkinName: Clothes_A
+  initialSkinName: default
   separatorSlotNames: []
   zSpacing: 0
   renderMeshes: 1
@@ -131,6 +131,6 @@ MonoBehaviour:
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: B_idle01
+  _animationName: B_walk
   loop: 0
   timeScale: 1

@@ -42,7 +42,7 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!isMove)
+		if (!isMove && movePos != null)
 		{
 			isMove = true;
 			stayTime = 0;
@@ -96,7 +96,7 @@ public class Character : MonoBehaviour {
 		_meshRenderer.sortingOrder = sortOrder;
 		if (Target == gameObject.transform.localPosition && isMove)
 		{
-			SetAnimation(State.B_idle01.ToString());
+			SetAnimation(State.B_walk.ToString());
 			stayTime += Time.deltaTime;
 			if (stayTime >= waitTime)
 			{

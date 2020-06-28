@@ -414,7 +414,8 @@ namespace Spine {
 		/// <summary>Sets an animation by name. <seealso cref="SetAnimation(int, Animation, bool)" /></summary>
 		public TrackEntry SetAnimation (int trackIndex, String animationName, bool loop) {
 			Animation animation = data.skeletonData.FindAnimation(animationName);
-			if (animation == null) throw new ArgumentException("Animation not found: " + animationName, "animationName");
+			if (animation == null) 
+				throw new ArgumentException("Animation not found: " + animationName, "animationName");
 			return SetAnimation(trackIndex, animation, loop);
 		}
 

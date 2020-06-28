@@ -1,0 +1,62 @@
+
+jiji.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fuzi
+  rotate: false
+  xy: 741, 170
+  size: 133, 319
+  orig: 133, 319
+  offset: 0, 0
+  index: -1
+lian
+  rotate: false
+  xy: 429, 247
+  size: 310, 242
+  orig: 310, 242
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: false
+  xy: 876, 312
+  size: 106, 177
+  orig: 106, 177
+  offset: 0, 0
+  index: -1
+toufa
+  rotate: false
+  xy: 2, 183
+  size: 425, 306
+  orig: 425, 306
+  offset: 0, 0
+  index: -1
+yan
+  rotate: false
+  xy: 429, 205
+  size: 108, 40
+  orig: 108, 40
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: false
+  xy: 351, 96
+  size: 68, 85
+  orig: 68, 85
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: false
+  xy: 876, 233
+  size: 69, 77
+  orig: 69, 77
+  offset: 0, 0
+  index: -1
+zzz
+  rotate: false
+  xy: 2, 2
+  size: 347, 179
+  orig: 347, 179
+  offset: 0, 0
+  index: -1
