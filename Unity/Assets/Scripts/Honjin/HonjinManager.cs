@@ -10,10 +10,12 @@ public class HonjinManager : MonoBehaviour
 	//private string[] sdPath = {"ABRes/PlayGround/art/sd-card/guangguo"};
 	List<SkeletonAnimation> listSkeletonAnimation = new List<SkeletonAnimation>();
 	public List<SDModel> listSDModel;
-	
+	public Dictionary<int, Character> dicSDModel = new Dictionary<int, Character>();
+	public static HonjinManager instance;
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+	{
+		instance = this;	
 		for (int i = 0; i< listSDModel.Count; i++)
 		{
 			string path = listSDModel[i].Path;
@@ -29,9 +31,23 @@ public class HonjinManager : MonoBehaviour
 			sa.gameObject.transform.localPosition = listSDModel[i].initalPos;
 			ct.SetData(listSDModel[i]);
 			listSkeletonAnimation.Add(sa);
+
+			if (path.Contains("daji"))
+			{
+				dicSDModel.Add(3823, ct);
+			}
+			else if(path.Contains("guangguo"))
+			{
+				dicSDModel.Add(8833, ct);
+			}
+			else if(path.Contains("mengxia"))
+			{
+				dicSDModel.Add(6871, ct);
+			}
 			//sa.AnimationName = "B_walk";//B_sit01,B_eat,B_walk,B_idle01
 		}
 	}
+	
 }
 
 [Serializable]

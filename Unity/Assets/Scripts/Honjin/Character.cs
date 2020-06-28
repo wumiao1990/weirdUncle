@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Spine.Unity;
 using UnityEngine;
 
@@ -8,10 +9,18 @@ public class Character : MonoBehaviour {
 	private float MoveSpeed = 1.5f;
 	private SkeletonAnimation sa;
 	private List<Vector3> movePos;
-	
+	private MeshRenderer _meshRenderer;
+	private State st = State.B_idle01;
+	public enum State
+	{
+		B_idle01,
+		B_walk,
+		work,
+	}
 	// Use this for initialization
 	void Awake () {
 		sa = gameObject.GetComponent<SkeletonAnimation>();
+		_meshRenderer = gameObject.GetComponent<MeshRenderer>();
 	}
 
 	public void SetAnimation(string name)
@@ -77,15 +86,17 @@ public class Character : MonoBehaviour {
 			gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
 		}
 
-		SetAnimation("B_walk");
+		SetAnimation(State.B_walk.ToString());
 	}
 
 	void MoveSD()
 	{
 		gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, Target, MoveSpeed * Time.deltaTime);
+		int sortOrder = 3 - (int)gameObject.transform.localPosition.y;
+		_meshRenderer.sortingOrder = sortOrder;
 		if (Target == gameObject.transform.localPosition && isMove)
 		{
-			SetAnimation("B_idle01");
+			SetAnimation(State.B_idle01.ToString());
 			stayTime += Time.deltaTime;
 			if (stayTime >= waitTime)
 			{
