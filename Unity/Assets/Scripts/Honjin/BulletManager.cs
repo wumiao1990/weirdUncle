@@ -42,5 +42,7 @@ public class BulletManager : MonoBehaviour {
 		sa.AnimationName = "mv1";
 		TrackEntry yanTrack = sa.state.SetAnimation(0, "mv1", false);
 		yanTrack.TimeScale = 1;
+		
+		SoundManager.instance.PlaySound(SoundManager.instance.Tap2, false);
 	}
 }

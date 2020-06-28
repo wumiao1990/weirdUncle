@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
 	}
     
 
-	public void PlaySound(AudioClip clip, bool loop)
+	public void PlaySound(AudioClip clip, bool loop, float volume = 1)
 	{
 		if (clip == null)
 			return;
@@ -37,6 +37,7 @@ public class SoundManager : MonoBehaviour
 		source.clip = clip;
 		source.Play();
 		source.loop = loop;
+		source.volume = volume;
 
 		if (!loop)
 			this.StartCoroutine(this._DestroyAfterPlay(source));

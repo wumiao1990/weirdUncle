@@ -1763,33 +1763,25 @@ MonoBehaviour:
   SDObj: {fileID: 939348881}
   listSDModel:
   - Path: ABRes/PlayGround/art/sd-card/guangguo
-    waitTime: 3
-    speed: 1.5
+    waitTime: 0
+    speed: 5
     initalPos: {x: 0, y: 0, z: 0}
-    movePos:
-    - {x: 10, y: 2, z: 0}
-    - {x: 5, y: 1, z: 0}
-  - Path: ABRes/PlayGround/art/sd-card/mengxia
-    waitTime: 3
-    speed: 1.5
-    initalPos: {x: 0, y: 0, z: 0}
-    movePos:
-    - {x: 9, y: 3, z: 0}
-    - {x: 4, y: 2, z: 0}
+    movePos: []
   - Path: ABRes/PlayGround/art/sd-card/daji
-    waitTime: 3
-    speed: 1.5
+    waitTime: 0
+    speed: 5
     initalPos: {x: 0, y: 0, z: 0}
-    movePos:
-    - {x: 8, y: 1, z: 0}
-    - {x: 3, y: 0, z: 0}
+    movePos: []
+  - Path: ABRes/PlayGround/art/sd-card/banci
+    waitTime: 0
+    speed: 5
+    initalPos: {x: 0, y: 0, z: 0}
+    movePos: []
   - Path: ABRes/PlayGround/art/sd-card/zhou
-    waitTime: 3
-    speed: 1.5
+    waitTime: 0
+    speed: 5
     initalPos: {x: 0, y: 0, z: 0}
-    movePos:
-    - {x: 7, y: 1, z: 0}
-    - {x: 6, y: 0, z: 0}
+    movePos: []
 --- !u!114 &1373564530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,9 +1797,9 @@ MonoBehaviour:
   BGM: {fileID: 8300000, guid: 257130b391da1bc45953244884494608, type: 3}
   Tap1: {fileID: 0}
   Tap2: {fileID: 0}
-  TapOnItem: {fileID: 0}
-  Builder: {fileID: 0}
-  Button: {fileID: 0}
+  TapOnItem: {fileID: 8300000, guid: 3ffde23c01bfa3444963f9202132de7b, type: 3}
+  Builder: {fileID: 8300000, guid: 405d0b4b7c9e5da408384e72dde173ac, type: 3}
+  Button: {fileID: 8300000, guid: eeedf4d05c8f7e8429a35a55c041f4b3, type: 3}
   Collect: {fileID: 0}
   Yeah: {fileID: 0}
   Sword: {fileID: 0}

@@ -42,7 +42,7 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!isMove && movePos != null)
+		if (!isMove && movePos != null && movePos.Count > 0)
 		{
 			isMove = true;
 			stayTime = 0;
@@ -72,6 +72,21 @@ public class Character : MonoBehaviour {
 		waitTime = model.waitTime;
 		MoveSpeed = model.speed;
 	}
+
+	public void SetTargetPos(Vector3 target)
+	{
+		Target = target;
+		if (gameObject.transform.localPosition.x > Target.x)
+		{
+			gameObject.transform.rotation = new Quaternion(0, -200, 0, 0);
+		}
+		else
+		{
+			gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+		}
+		st = State.work;
+	}
+	
 	// Update is called once per frame
 	Vector3 Target = Vector3.zero;
 	public void StartMove(Vector3 sdTarget)
@@ -103,6 +118,15 @@ public class Character : MonoBehaviour {
 				isMove = false;
 			}
 		}
+		else if (st == State.work && Target == gameObject.transform.localPosition)
+		{
+			SetAnimation(st.ToString());
+			gameObject.transform.rotation = new Quaternion(0, -200, 0, 0);
+		}
+		else
+		{
+			SetAnimation(State.B_walk.ToString());
+		}
 	}
 	
 	//有刚体的不勾选is trigger,  被动方没有刚体，但是勾选IS Trigger
@@ -112,6 +136,7 @@ public class Character : MonoBehaviour {
 		Debug.Log("触发器开始:" + other.gameObject.name);
 		GameObject.Destroy(gameObject);
 		Destroy(other.gameObject);
+		SoundManager.instance.PlaySound(SoundManager.instance.Tap1, false);
 	}
 		
 	void OnTriggerStay(Collider other)

@@ -327,6 +327,11 @@ public class DataBaseManager : MonoBehaviour
     {
 		this._gameData.sceneData.RemoveItem(item.instanceId);
         this.SaveDataBase();
+        
+        if(HonjinManager.instance.dicSDModel.ContainsKey(item.itemData.id))
+        {
+	        HonjinManager.instance.dicSDModel[item.itemData.id].SetTargetPos(new Vector3(0,0,0));
+        }
     }
 
 	public void SaveDataBase()

@@ -23,18 +23,27 @@ public class MainManager : MonoBehaviour
 		
 		btn1.onClick.AddListener(() =>
 		{
-			PlayVideo("1");
-			//Handheld.PlayFullScreenMovie("1.mp4", Color.white, FullScreenMovieControlMode.Full);
+			#if UNITY_EDITOR
+				PlayVideo("1");
+			#else
+				Handheld.PlayFullScreenMovie("1.mp4", Color.white, FullScreenMovieControlMode.CancelOnInput );
+			#endif
 		});
 		btn2.onClick.AddListener(() =>
         {
-	        PlayVideo("2");
-	        //Handheld.PlayFullScreenMovie("2.mp4", Color.white, FullScreenMovieControlMode.Full);
+			#if UNITY_EDITOR
+				PlayVideo("2");
+			#else
+				Handheld.PlayFullScreenMovie("2.mp4", Color.white, FullScreenMovieControlMode.CancelOnInput );
+			#endif
         });
 		btn3.onClick.AddListener(() =>
 		{
-			PlayVideo("3");
-			//Handheld.PlayFullScreenMovie("3.mp4", Color.white, FullScreenMovieControlMode.Full);
+			#if UNITY_EDITOR
+				PlayVideo("1");
+			#else
+				Handheld.PlayFullScreenMovie("3.mp4", Color.white, FullScreenMovieControlMode.CancelOnInput );
+			#endif
 		});
 		
 		ScaleRawImage();

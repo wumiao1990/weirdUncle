@@ -41,7 +41,7 @@ public class HonjinManager : MonoBehaviour
 			{
 				dicSDModel.Add(8833, ct);
 			}
-			else if(path.Contains("mengxia"))
+			else if(path.Contains("zhou"))
 			{
 				dicSDModel.Add(6871, ct);
 			}
@@ -49,7 +49,7 @@ public class HonjinManager : MonoBehaviour
 		}
 		
 		SoundManager.instance.StopAllSounds();
-		SoundManager.instance.PlaySound(SoundManager.instance.BGM, true);
+		SoundManager.instance.PlaySound(SoundManager.instance.BGM, true, 0.4f);
 	}
 
 	private void Update()

@@ -115,7 +115,7 @@ public class BaseItemScript : MonoBehaviour
 
 		this.SetPosition(new Vector3(posX, posY, 0));
 		this.UpdateConnectedItems();
-
+		HonjinManager.instance.dicSDModel[itemId].SetTargetPos(new Vector3(posX, posY, 0));
 		//if(this.itemData.configuration.productionRate > 0)
 		//{
 		//	this.ShowCollectNotificationUI(true, this.itemData.configuration.product);
@@ -379,6 +379,7 @@ public class BaseItemScript : MonoBehaviour
 
 			GroundManager.instance.UpdateBaseItemNodes(this, GroundManager.Action.ADD);
 			DataBaseManager.instance.UpdateItemData(this);
+			HonjinManager.instance.dicSDModel[this.itemData.id].SetTargetPos(new Vector3(GetPositionX(), GetPositionY(), 0));
 
 			//play sound for end drag item , here loop is false
             SoundManager.instance.PlaySound(SoundManager.instance.TapOnItem, false);
