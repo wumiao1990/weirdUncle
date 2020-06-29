@@ -330,7 +330,7 @@ public class DataBaseManager : MonoBehaviour
         
         if(HonjinManager.instance.dicSDModel.ContainsKey(item.itemData.id))
         {
-	        HonjinManager.instance.dicSDModel[item.itemData.id].SetTargetPos(HonjinManager.instance.dicSDModel[item.itemData.id].initalPos);
+	        HonjinManager.instance.dicSDModel[item.itemData.id].SetTargetPos(HonjinManager.instance.dicSDModel[item.itemData.id].initalPos, 0);
 	        HonjinManager.instance.dicSDModel[item.itemData.id].st = Character.State.B_walk;
         }
     }

@@ -8,7 +8,7 @@ public class Character : MonoBehaviour {
 
 	private float MoveSpeed = 1.5f;
 	private SkeletonAnimation sa;
-	private List<Vector3> movePos;
+	private List<GameObject> movePos;
 	public Vector3 initalPos;
 	private MeshRenderer _meshRenderer;
 	public State st = State.B_idle01;
@@ -56,7 +56,7 @@ public class Character : MonoBehaviour {
 	Vector3 GetTargetPos()
 	{
 		int r = Random.Range(0, movePos.Count);
-		Vector3 tarpos = movePos[r];
+		Vector3 tarpos = movePos[r].transform.localPosition;
 		if (tarpos == Target)
 		{
 			return GetTargetPos();
@@ -75,9 +75,9 @@ public class Character : MonoBehaviour {
 		initalPos = model.initalPos;
 	}
 
-	public void SetTargetPos(Vector3 target)
+	public void SetTargetPos(Vector3 target, float offets = 1)
 	{
-		Target = new Vector3(target.x - 1, target.y, target.z);
+		Target = new Vector3(target.x - offets, target.y, target.z);
 		if (gameObject.transform.localPosition.x > Target.x)
 		{
 			gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -109,7 +109,7 @@ public class Character : MonoBehaviour {
 	void MoveSD()
 	{
 		gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, Target, MoveSpeed * Time.deltaTime);
-		int sortOrder = 3 - (int)gameObject.transform.localPosition.y;
+		int sortOrder = GroundManager.nodeHeight - (int)gameObject.transform.localPosition.y + 1;
 		_meshRenderer.sortingOrder = sortOrder;
 		if (Target == gameObject.transform.localPosition && isMove)
 		{

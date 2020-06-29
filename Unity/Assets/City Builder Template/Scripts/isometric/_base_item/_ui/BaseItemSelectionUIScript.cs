@@ -62,4 +62,9 @@ public class BaseItemSelectionUIScript : MonoBehaviour
 			this.Grid.sprite = this.GridRed;
 		}
 	}
+	
+	public void SetGridOrder(int order)
+	{
+		this.Grid.sortingOrder = order;
+	}
 }

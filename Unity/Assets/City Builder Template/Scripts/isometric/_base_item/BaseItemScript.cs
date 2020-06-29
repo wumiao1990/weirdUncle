@@ -338,6 +338,7 @@ public class BaseItemScript : MonoBehaviour
 		}
 	}
 
+	private SpriteRenderer spriteRenderer = null;
 	public void OnItemDrag(CameraManager.CameraEvent evt)
 	{
 		Vector3 point = evt.point + _deltaDistance;
@@ -350,7 +351,12 @@ public class BaseItemScript : MonoBehaviour
 			this.UpdateConnectedItems();
 
 			bool isPlacable = _IsInPlacablePosition();
-			Renderer.RenderGameobject.transform.Find("image").GetComponent<SpriteRenderer>().sortingOrder = 2 - (int)point.y;
+			if (spriteRenderer == null)
+			{
+				spriteRenderer = Renderer.RenderGameobject.transform.Find("image").GetComponent<SpriteRenderer>();
+			}
+			spriteRenderer.sortingOrder = GroundManager.nodeHeight - (int)point.y;
+			this.UI.selectionUIInstance.SetGridOrder(spriteRenderer.sortingOrder - 1);
 			if (isPlacable)
 			{
 				this.UI.selectionUIInstance.SetGridColor(Color.green);

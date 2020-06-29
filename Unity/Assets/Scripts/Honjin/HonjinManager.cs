@@ -77,5 +77,5 @@ public class SDModel
 	public float waitTime;
 	public float speed;
 	public Vector3 initalPos = Vector3.zero;
-	public List<Vector3> movePos;
+	public List<GameObject> movePos;
 }
